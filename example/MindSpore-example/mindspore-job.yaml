@@ -1,0 +1,54 @@
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: mindspore-job
+spec:
+  minAvailable: 1
+  schedulerName: volcano
+  policies:
+    - event: PodEvicted
+      action: RestartJob
+  plugins:
+    ssh: []
+    env: []
+    svc: []
+  maxRetry: 5
+  queue: default
+  # Comment out the following section to enable volumes for job input/output.
+  #volumes:
+  #  - mountPath: "/myinput"
+  #  - mountPath: "/myoutput"
+  #    volumeClaimName: "testvolumeclaimname"
+  #    volumeClaim:
+  #      accessModes: [ "ReadWriteOnce" ]
+  #      storageClassName: "my-storage-class"
+  #      resources:
+  #        requests:
+  #          storage: 1Gi
+  tasks:
+    - replicas: 2
+      name: "mindspore-test"
+      template:
+        spec:
+          containers:
+            - command: ["/bin/bash", "-c", "python /tmp/test/lenet.py"]
+              image: mindspore/mindspore-cpu:0.2.0-alpha
+              imagePullPolicy: IfNotPresent
+              name: mindspore-job
+              resources:
+                limits:
+                  cpu: "1"
+                requests:
+                  cpu: "0.5"
+              volumeMounts:
+              - name: training-result
+                mountPath: /tmp/result
+              - name: ms-mnist
+                mountPath: /tmp/test
+          restartPolicy: OnFailure
+          volumes:
+            - name: training-result
+              emptyDir: {}
+            - name: ms-mnist
+              hostPath:
+                path: /root/gopath/src/volcano.sh/volcano/example/MindSpore-example/
