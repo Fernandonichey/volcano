@@ -26,22 +26,24 @@ These two examples are tested under below env:
 
 ## MindSpore CPU example
 
-Using mindspore/mindspore-cpu:0.2.0-alpha as the container image, 
-trains LeNet with MNIST dataset. The MNIST dataset is also included.
+Using a modified MindSpore CPU image as the container image which
+trains LeNet with MNIST dataset. 
 
-to run: `kubectl apply -f mindspore-job.yaml`  
-to check the result: `kubectl logs mindspore-job-mindspore-test-0`
+pull image: `docker pull lyd911/mindspore-cpu-example:0.2.0`
+to run: `kubectl apply -f mindspore-cpu.yaml`  
+to check the result: `kubectl logs mindspore-cpu-pod-0`
 
 ## MindSpore GPU example
 
-Using a modified image which the openssh-server is installed rather 
-than the official MindSpore GPU image. To check the eligibility of
+Using a modified image which the openssh-server is installed from
+the official MindSpore GPU image. To check the eligibility of
 MindSpore GPU's ability to communicate with other processes, we
 leverage the mpimaster and mpiworker task spec of Volcano. In this
 example, we launch one mpimaster and two mpiworkers, the python script 
-is from MindSpore README, which is also modified to be able to run
-parallelly.
+is taken from MindSpore Gitee [README](https://gitee.com/mindspore/mindspore/blob/master/README.md ), which is also modified to be 
+able to run parallelly.
 
+pull image: `docker pull lyd911/mindspore-gpu-example:0.2.0`
 to run: `kubectl apply -f mindspore-gpu.yaml`  
 to check result: `kubectl logs mindspore-gpu-mpimster-0`
 
