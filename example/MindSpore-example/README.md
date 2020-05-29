@@ -38,8 +38,8 @@ Using a modified image which the openssh-server is installed rather
 than the official MindSpore GPU image. To check the eligibility of
 MindSpore GPU's ability to communicate with other processes, we
 leverage the mpimaster and mpiworker task spec of Volcano. In this
-example, we launch one mpimaster and two mpiworkers, the script is
-from MindSpore README, which is also modified to be able to run
+example, we launch one mpimaster and two mpiworkers, the python script 
+is from MindSpore README, which is also modified to be able to run
 parallelly.
 
 to run: `kubectl apply -f mindspore-gpu.yaml`  
