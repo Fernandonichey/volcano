@@ -28,6 +28,7 @@ These two examples are tested under below env:
 
 Using mindspore/mindspore-cpu:0.2.0-alpha as the container image, 
 trains LeNet with MNIST dataset. The MNIST dataset is also included.
+
 to run: `kubectl apply -f mindspore-job.yaml`  
 to check the result: `kubectl logs mindspore-job-mindspore-test-0`
 
