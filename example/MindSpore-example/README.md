@@ -28,7 +28,7 @@ These two examples are tested under below env:
 
 Using mindspore/mindspore-cpu:0.2.0-alpha as the container image, 
 trains LeNet with MNIST dataset. The MNIST dataset is also included.
-to run: `kubectl apply -f mindspore-job.yaml`
+to run: `kubectl apply -f mindspore-job.yaml`  
 to check the result: `kubectl logs mindspore-job-mindspore-test-0`
 
 ## MindSpore GPU example
@@ -41,7 +41,7 @@ example, we launch one mpimaster and two mpiworkers, the script is
 from MindSpore README, which is also modified to be able to run
 parallelly.
 
-to run: `kubectl apply -f mindspore-gpu.yaml`
+to run: `kubectl apply -f mindspore-gpu.yaml`  
 to check result: `kubectl logs mindspore-gpu-mpimster-0`
 
 The expected output should be (2*3) of multi-dimensional array.
