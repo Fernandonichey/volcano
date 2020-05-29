@@ -26,7 +26,7 @@ spec:
   #        requests:
   #          storage: 1Gi
   tasks:
-    - replicas: 2
+    - replicas: 8
       name: "mindspore-test"
       template:
         spec:
@@ -39,7 +39,7 @@ spec:
                 limits:
                   cpu: "1"
                 requests:
-                  cpu: "0.5"
+                  cpu: "1"
               volumeMounts:
               - name: training-result
                 mountPath: /tmp/result
@@ -51,4 +51,4 @@ spec:
               emptyDir: {}
             - name: ms-mnist
               hostPath:
-                path: /root/gopath/src/volcano.sh/volcano/example/MindSpore-example/
+                path: /root/volcano/example/MindSpore-example/mindspore_cpu/
