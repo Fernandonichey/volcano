@@ -1,6 +1,6 @@
 # MindSpore Volcano Example
 
-#### These examples shows how to run MindSpore via Volcano. Since MindSpore itself is relatively new, these examples maybe oversimplified, but will evolve with both communitiess.
+#### These examples shows how to run MindSpore via Volcano. Since MindSpore itself is relatively new, these examples maybe oversimplified, but will evolve with both communities.
 
 ## Introduction of MindSpore
 
